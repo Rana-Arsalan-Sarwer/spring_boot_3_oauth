@@ -9,12 +9,20 @@ import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 @EnableWebSecurity
 public class SecurityConfig {
+
+    public static final String[] PUBLIC_URLS = {
+            "/callback",
+            "/callback2",
+            "/test"
+    };
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
+                .requestMatchers(PUBLIC_URLS)
+                .permitAll()
                 .anyRequest()
                 .authenticated()
                 .and()

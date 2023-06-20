@@ -1,0 +1,19 @@
+spring:
+  security:
+    oauth2:
+      client:
+        provider:
+          azure-ad:
+            authorizationUri: https://login.microsoftonline.com/cfd94e65-c6bc-4fa7-bbd0-c0f9ffcda1b4/oauth2/v2.0/authorize
+            tokenUri: https://login.microsoftonline.com/cfd94e65-c6bc-4fa7-bbd0-c0f9ffcda1b4/oauth2/v2.0/token
+            jwkSetUri: https://login.microsoftonline.com/cfd94e65-c6bc-4fa7-bbd0-c0f9ffcda1b4/discovery/v2.0/keys
+        registration:
+          azure-client:
+            provider: azure-ad
+            clientId: a1e3a6ca-5e87-4aa4-9e1f-fe76f4f159d0
+            clientSecret: 57ca37f7-7037-4d04-8bb5-b8578c4572fc
+            authorizationGrantType: authorization_code
+            redirectUri: "http://localhost:8080/callback"
+            scope: openid
+server:
+  forward-headers-strategy: native
